@@ -261,6 +261,7 @@ ws = Workspace(
 ![image](https://github.com/user-attachments/assets/65092cc9-7555-4d82-84e3-08609156e490)
 
 - To create a .yaml file
+
 ![image](https://github.com/user-attachments/assets/0b3e9f4e-dd7c-4e8a-9192-eb42aaef0294)
 
 - Insert the code and save it.
@@ -368,7 +369,7 @@ print("mAP50_95: ", mean_average_precision.map50_95)
 
 ![image](https://github.com/user-attachments/assets/8be0533b-b557-457e-8f05-29a967a4df42)
 
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/6d74b5af-2a64-42b2-be84-59f2eab9fd22)
 
 
 
