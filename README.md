@@ -326,9 +326,11 @@ import matplotlib.pyplot as plt
 
 data_yaml_path = r"./dataset.yaml"
 
-annotations_directory_path = r"/mnt/batch/tasks/shared/LS_root/mounts/clusters/compute-target/code/Users/kewalee.sr/Object_detection/datasets/DroneDataset/Test_data" 
+annotations_directory_path = r"/mnt/batch/tasks/shared/LS_root/mounts/clusters/compute-target/code/Users/kewalee.sr/Object_detection/datasets/DroneDataset/Test_data"
+#Enter the path of the test dataset in the data.yaml file.
 
 images_directory_path = r"/mnt/batch/tasks/shared/LS_root/mounts/clusters/compute-target/code/Users/kewalee.sr/Object_detection/datasets/DroneDataset/Test_data"
+#Enter the path of the test dataset in the data.yaml file.
 
 with open(data_yaml_path, 'r', encoding='utf-8') as file:
     print(file.read())  
