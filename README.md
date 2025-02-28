@@ -118,6 +118,14 @@ For the annotation process, we will use Roboflow, a powerful tool designed for l
 
 ![image](https://github.com/user-attachments/assets/a9e840de-b077-454f-b167-59cf991cfdfb)
 
+#### 1.3.13. Click Start Manual Labeling. 
+![image](https://github.com/user-attachments/assets/e8752296-f373-4d92-91c6-53bcb1bbae30)
+
+#### 1.3.14. You can add other users and then click 'Assign to Myself'.
+
+![image](https://github.com/user-attachments/assets/0ba124b6-9d79-4dd8-9d18-3bee7120b851)
+
+Do this for the entire Train, Validation, and Test folders.
 
 
 Models - [Ultralytics YOLO](https://docs.ultralytics.com/models/#featured-models)
