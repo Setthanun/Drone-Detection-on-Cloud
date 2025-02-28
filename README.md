@@ -169,5 +169,54 @@ For the annotation process, we will use Roboflow, a powerful tool designed for l
 #### 1.4.1. Create a new folder by merging the images and their corresponding annotation files (.txt) into the same folder. Do this for Train, Test, and Validation datasets.
 ![image](https://github.com/user-attachments/assets/4a86b6b7-b0f7-4af2-8573-2b0e8c38944e)
 
-#### 1.4.2.
+#### 1.4.2. In the Data page, click Create.
+![image](https://github.com/user-attachments/assets/3c850fe9-99a0-444f-9a34-6adad7654692)
+
+#### 1.4.3. In the Create data asset section, enter the dataset name and select the type as Folder, then click Next.
+
+![image](https://github.com/user-attachments/assets/37166773-c349-4a39-8d30-7c4629b17efc)
+
+#### 1.4.4. In the Create data asset tab, under Data source, select From local file, then click Next.
+
+![image](https://github.com/user-attachments/assets/93b0ac3d-e4cf-4a1a-a4b7-890661189ca7)
+
+#### 1.4.5. In the Create data asset tab, under Destination storage type, select workspaceblobstore, then click Next.
+
+![image](https://github.com/user-attachments/assets/cb594e08-45ee-4c1c-bb38-dc2d99624ed6)
+
+#### 1.4.6. In the Create data asset tab, under Folder selection, click Upload file or folder, then select Upload folder. Next, upload the prepared dataset folders for train, validation, and test, which include both images and annotation .txt files. Then, click Next.
+
+![image](https://github.com/user-attachments/assets/734a4779-b486-41aa-a015-16537c54dcd4)
+
+#### 1.4.7. On the Review page, click Create.
+Result
+
+![image](https://github.com/user-attachments/assets/ac851b53-64e2-460f-b889-14fe79c2f252)
+
+### 1.5. Training and Testing YOLOv8 Model on the Cloud
+#### 1.5.1 On the left menu bar, scroll up to the top and click on "Notebooks." In the Notebooks page, click on "+ Files," then select "Create new folder" and name the folder before clicking "Create."
+![image](https://github.com/user-attachments/assets/3c36d4b3-2282-4989-b944-ec0bb9f52c1a)
+![image](https://github.com/user-attachments/assets/868ce472-fffb-4207-8202-26662fb79a6a)
+
+#### 1.5.2 Go to the folder you created, click on the "..." button at the back, then select "Create new file." Enter the file name and choose "File type" as Notebook (*.ipynb), then click "Create."
+![image](https://github.com/user-attachments/assets/65092cc9-7555-4d82-84e3-08609156e490)
+
+![image](https://github.com/user-attachments/assets/4ca13ab8-b0e2-46a7-8818-0b467c74128c)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
