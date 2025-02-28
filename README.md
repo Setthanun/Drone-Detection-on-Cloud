@@ -160,7 +160,14 @@ For the annotation process, we will use Roboflow, a powerful tool designed for l
 
 ![image](https://github.com/user-attachments/assets/34cbcb65-173b-49b0-a1d3-2270d1b4e1e4)
 
-#### 1.3.24. On the Download page, select 'Download zip to computer', choose the format as TXT, then select the model name and click Continue.
+#### 1.3.24 On the Download page, select Download zip to computer. For Format, choose TXT and select the YOLOv8 model name, then click Continue.
 
 ![image](https://github.com/user-attachments/assets/c4c48a03-44e5-40fd-b3a4-7c5023c0d13a)
+
+### 1.4. Upload data to the cloud in Azure AI | Machine Learning Studio
+
+#### 1.4.1. Create a new folder by merging the images and their corresponding annotation files (.txt) into the same folder. Do this for Train, Test, and Validation datasets.
+![image](https://github.com/user-attachments/assets/4a86b6b7-b0f7-4af2-8573-2b0e8c38944e)
+
+#### 1.4.2.
 
