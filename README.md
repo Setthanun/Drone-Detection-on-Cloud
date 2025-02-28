@@ -156,4 +156,11 @@ For the annotation process, we will use Roboflow, a powerful tool designed for l
 
 ![image](https://github.com/user-attachments/assets/b118f76f-07d9-44b9-a0d9-ed5b7a1f0d97)
 
+#### 1.3.23. On the Dataset Versions page, select Download Dataset.
+
+![image](https://github.com/user-attachments/assets/34cbcb65-173b-49b0-a1d3-2270d1b4e1e4)
+
+#### 1.3.24. On the Download page, select 'Download zip to computer', choose the format as TXT, then select the model name and click Continue.
+
+![image](https://github.com/user-attachments/assets/c4c48a03-44e5-40fd-b3a4-7c5023c0d13a)
 
