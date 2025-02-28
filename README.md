@@ -3,6 +3,8 @@
 ## Step 1: Data Preparation
 
 ### 1.1. Download Dataset 
+This dataset consists of high-resolution images capturing drones in various environments and conditions. The images are specifically collected for tasks such as object detection, tracking, and classification, enabling the development and evaluation of computer vision models for drone-related applications.
+
 [![Dataset](https://img.shields.io/badge/Dataset-Drone-red)](https://drive.google.com/file/d/1EYZkrOq_FYzLHuo12X-vbcBQhEuoWPFc/view?usp=sharing)
 ### 1.2. Data Splitting
 To provide flexibility in managing your dataset, you are encouraged to manually divide the data into three distinct sets: Training, Testing, and Validation. Please follow the steps below to properly organize your data
@@ -83,6 +85,38 @@ test_dir = r'C:\Users\SETTHANUN\Desktop\Split\Test\Image'
 ```
 
 ### 1.3. Annotation
+For the annotation process, we will use Roboflow, a powerful tool designed for labeling and annotating images efficiently. Roboflow allows us to create and manage labeled datasets for various machine learning tasks, including image classification, object detection, and segmentation. By leveraging its intuitive interface, we can easily annotate our images and export them in the required formats for model training and evaluation.
+
+#### 1.3.1. Go to the Roboflow website.
+[![Roboflow](https://img.shields.io/badge/roboflow-labels-purple)](https://app.roboflow.com/)
+
+#### 1.3.2. On the Roboflow page, select Create my own workspace.
+#### 1.3.3. Enter the desired workspace name in the 'Name Your Workspace' field.
+#### 1.3.4. Choose Public Plan.
+#### 1.3.5. Click Continue.
+
+![image](https://github.com/user-attachments/assets/0b090fce-2aee-4874-a74c-7bc1990a5edc)
+
+#### 1.3.6. On the Invite teammates page, you can add other users to collaborate on labeling.
+#### 1.3.7. Click Create Workspace.
+
+![image](https://github.com/user-attachments/assets/01cda051-d18a-4ff7-a3b0-6c144a10f087)
+
+#### 1.3.8. Go to the Projects page and click New Project.
+![image](https://github.com/user-attachments/assets/0fb03c02-4935-42be-aff3-083d5aae129a)
+
+#### 1.3.9. Enter the Project Name and Annotation Group.
+#### 1.3.10. Select Object Detection, then click Create Public Project.
+
+![image](https://github.com/user-attachments/assets/5e4232b5-04f1-470b-8000-6d389755549c)
+
+#### 1.3.11. On the Upload page, select 'Select Folder,' then choose the folder containing the images to be labeled.
+
+![image](https://github.com/user-attachments/assets/b1bed0c5-7abc-4f49-984f-7e0bdc89aef9)
+
+#### 1.3.12. Enter the Batch Name and then click Save and Continue
+
+![image](https://github.com/user-attachments/assets/a9e840de-b077-454f-b167-59cf991cfdfb)
 
 
 
