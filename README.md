@@ -193,27 +193,182 @@ Result
 
 ![image](https://github.com/user-attachments/assets/ac851b53-64e2-460f-b889-14fe79c2f252)
 
-### 1.5. Training and Testing YOLOv8 Model on the Cloud
-#### 1.5.1 On the left menu bar, scroll up to the top and click on "Notebooks." In the Notebooks page, click on "+ Files," then select "Create new folder" and name the folder before clicking "Create."
+## Step 2: Training and Testing YOLOv8 Model on the Cloud
+### 2.1. Install Dependencies
+```bash
+pip install ultralytics azureml-sdk roboflow supervision
+```
+
+### 2.2. On the left menu bar, scroll up to the top and click on "Notebooks." In the Notebooks page, click on "+ Files," then select "Create new folder" and name the folder before clicking "Create."
 ![image](https://github.com/user-attachments/assets/3c36d4b3-2282-4989-b944-ec0bb9f52c1a)
 ![image](https://github.com/user-attachments/assets/868ce472-fffb-4207-8202-26662fb79a6a)
 
-#### 1.5.2 Go to the folder you created, click on the "..." button at the back, then select "Create new file." Enter the file name and choose "File type" as Notebook (*.ipynb), then click "Create."
+### 2.3. Go to the folder you created, click on the "..." button at the back, then select "Create new file." Enter the file name and choose "File type" as Notebook (*.ipynb), then click "Create."
 ![image](https://github.com/user-attachments/assets/65092cc9-7555-4d82-84e3-08609156e490)
 
 ![image](https://github.com/user-attachments/assets/4ca13ab8-b0e2-46a7-8818-0b467c74128c)
 
+### 2.4. In the Notebook.ipynb page that was created, under Compute, select the created Compute and click Run (if it's green, no need to click) until it changes from a black circle to green.
+![image](https://github.com/user-attachments/assets/361eb4e0-bad5-4cd3-a0b0-ab411d42b052)
+
+### 2.5. To load and mount a dataset from Azure Machine Learning (Azure ML) to a local directory using the Azure ML SDK
+
+```python
+from azureml.core import Workspace, Dataset
+import os
+
+ws = Workspace(
+    subscription_id="", 
+    resource_group="", 
+    workspace_name=""
+) #'Workspace' changes to the 'Workspace' data of the user's account.
+
+dataset = Dataset.get_by_name(ws, name="", version="1") #Change 'name' to the user's own dataset name.
+
+local_path = "./datasets/DroneDataset" #Change from 'DroneDataset' to the user's own dataset name.
+os.makedirs(local_path, exist_ok=True)
+
+mount_context = dataset.mount(local_path)
+mount_context.start()
+
+train_data = os.path.join(local_path, "Train_data")
+val_data = os.path.join(local_path, "Validation_data")
+test_data = os.path.join(local_path, "Test_data")
+#Change from 'Train_data', 'Validation_data', 'Test_data' to the folder names Train, Validation, Test that the user has uploaded in their own Dataset.
+
+print("Mounted dataset at:", local_path)
+print("Train data:", train_data)
+print("Validation data:", val_data)
+print("Test data:", test_data)
+
+```
+- How to view Workspace: User can find the 'workspace_name' from the 'Current workspace' mentioned in parentheses.
+
+![image](https://github.com/user-attachments/assets/519bcfc8-41e0-4ce1-a924-d00431f6431c)
+
+- Example of how to specify a Workspace: 
+
+```python
+ws = Workspace(
+    subscription_id="fcbf128f-aa80-4469-99a5-706b320e4401",
+    resource_group="ml-resource-group", 
+    workspace_name="ml-workspace"
+)
+```
+
+### 2.6. Create dataset.yaml
+- Go to the folder you created, click on the "..." button at the back, then select "Create new file." Enter the file name and choose "File type" as Notebook (*.ipynb), then click "Create."
+![image](https://github.com/user-attachments/assets/65092cc9-7555-4d82-84e3-08609156e490)
+
+- To create a .yaml file
+![image](https://github.com/user-attachments/assets/0b3e9f4e-dd7c-4e8a-9192-eb42aaef0294)
+
+- Insert the code and save it.
+```bash
+train: /mnt/batch/tasks/shared/LS_root/mounts/clusters/compute-target/code/Users/kewalee.sr/Object_detection/datasets/DroneDataset/Train_data
+val: /mnt/batch/tasks/shared/LS_root/mounts/clusters/compute-target/code/Users/kewalee.sr/Object_detection/datasets/DroneDataset/Validation_data
+test: /mnt/batch/tasks/shared/LS_root/mounts/clusters/compute-target/code/Users/kewalee.sr/Object_detection/datasets/DroneDataset/Test_data
+
+nc: 1  # จำนวน classes
+names: ['drone']  # classes name
+```
+- How to insert a path into a .yaml file: 
+```bash
+train: /mnt/batch/tasks/shared/LS_root/mounts/clusters/compute-target/code/Users/kewalee.sr/Object_detection/datasets/DroneDataset/Train_data
+val: /mnt/batch/tasks/shared/LS_root/mounts/clusters/compute-target/code/Users/kewalee.sr/Object_detection/datasets/DroneDataset/Validation_data
+test: /mnt/batch/tasks/shared/LS_root/mounts/clusters/compute-target/code/Users/kewalee.sr/Object_detection/datasets/DroneDataset/Test_data
+```
+Do not make changes to the section of /mnt/batch/tasks/shared/LS_root/mounts/clusters/compute-target/code/. In the Users/kewalee.sr/Object_detection/datasets/DroneDataset, choose 'Copy folder path' from the Datasets folder you created and replace it (with DroneDataset being the user's dataset name). In the Train_data section, replace it with the name of the folder you set for Train, Validation, and Test.
 
 
+### 2.7. Train YOLOv8 model
+#### 2.7.1.In the case of starting training from scratch
+```python
+import time
+
+from ultralytics import YOLO
+
+model = YOLO("yolov8n.pt")  
+
+start_time = time.time()
+
+model.train(data='./dataset.yaml', epochs=, imgsz=640) #Set the epochs yourself.
+
+end_time = time.time()
+elapsed_time = end_time - start_time
+
+print(f"Training completed in {elapsed_time:.2f} seconds ({elapsed_time / 60:.2f} minutes).")
+```
+
+#### 2.7.2.In the case of fine-tuning from an already existing model
+```python
+from ultralytics import YOLO
+
+model = YOLO("./runs/detect/train/weights/best.ptt")  
+
+start_time = time.time()
+
+model.train(data='./dataset.yaml', epochs=, imgsz=640) #Set the epochs yourself.
+
+end_time = time.time()
+elapsed_time = end_time - start_time
+
+print(f"Training completed in {elapsed_time:.2f} seconds ({elapsed_time / 60:.2f} minutes).")
+```
+
+### 2.8. Test YOLOv8 model
+```python
+import supervision as sv
+from ultralytics import YOLO
+import numpy as np  
+import matplotlib.pyplot as plt
+
+data_yaml_path = r"./dataset.yaml"
+
+annotations_directory_path = r"/mnt/batch/tasks/shared/LS_root/mounts/clusters/compute-target/code/Users/kewalee.sr/Object_detection/datasets/DroneDataset/Test_data" 
+
+images_directory_path = r"/mnt/batch/tasks/shared/LS_root/mounts/clusters/compute-target/code/Users/kewalee.sr/Object_detection/datasets/DroneDataset/Test_data"
+
+with open(data_yaml_path, 'r', encoding='utf-8') as file:
+    print(file.read())  
+
+dataset = sv.DetectionDataset.from_yolo(
+    annotations_directory_path=annotations_directory_path,
+    data_yaml_path=data_yaml_path,
+    images_directory_path=images_directory_path
+)
+
+model = YOLO("./runs/detect/train/weights/best.pt")  
+
+def callback(image: np.ndarray) -> sv.Detections:
+    result = model.predict(source=images_directory_path, save=True)[0]
+    
+    if result.probs is not None and len(result.probs) > 0:
+        print("Detected class names:", result.names)
+        print("Detected class indices:", result.probs.argmax(axis=-1))
+        predicted_classes = [result.names[int(i)] for i in result.probs.argmax(axis=-1)]
+        print("Predicted class names:", predicted_classes)
+    else:
+        print("No objects detected in the image.")
+    
+    return sv.Detections.from_ultralytics(result)
 
 
+mean_average_precision = sv.MeanAveragePrecision.benchmark(
+    dataset=dataset,
+    callback=callback
+)
+
+print("mAP50: ", mean_average_precision.map50)
+print("mAP50_95: ", mean_average_precision.map50_95)
+```
 
 
+## 3. Result
 
+![image](https://github.com/user-attachments/assets/8be0533b-b557-457e-8f05-29a967a4df42)
 
-
-
-
+![Uploading image.png…]()
 
 
 
