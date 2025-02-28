@@ -125,9 +125,35 @@ For the annotation process, we will use Roboflow, a powerful tool designed for l
 
 ![image](https://github.com/user-attachments/assets/faa46488-2913-4db5-ae02-6c2952b62660)
 
+#### 1.3.15. Select Start Annotating
 
+![image](https://github.com/user-attachments/assets/db8241e6-a443-459f-bbd3-ffa435e46ccf)
 
+#### 1.3.16. Select the Bounding Box Tool, then perform the annotation by dragging a rectangle to surround the drone.
+#### 1.3.17. There will be a field to enter the class name, type 'Drone', and then click Save. Repeat this process until all images are done. **The class name must be the same for all images.
 
-#### 1.3.14. Do this for the entire Train, Validation, and Test folders.
+![image](https://github.com/user-attachments/assets/cb10a487-069f-4fe6-a457-5cf21c5e65ea)
+
+#### !!! Don't forget to specify whether it's training, validation, or test data.
+![image](https://github.com/user-attachments/assets/2513afa2-becd-4500-8789-f8d0364026e9)
+
+#### 1.3.18. After annotating, click + New Version.
+
+![image](https://github.com/user-attachments/assets/7d552e4e-8292-43d0-b073-90397edb01a2)
+
+#### 1.3.19. Check the accuracy of the data, such as the total number of images, the number of classes, and the number of images in each split.
+
+![image](https://github.com/user-attachments/assets/2bb176b6-a349-4f28-ba33-dbaf3bb2726e)
+
+#### 1.3.20. Preprocessing: Remove Auto-Orient and Resize, then click Continue.
+![image](https://github.com/user-attachments/assets/eb651c41-b553-4035-8186-d009cbed2092)
+
+#### 1.3.21. Augmentation: Don't select anything, click Continue.
+
+![image](https://github.com/user-attachments/assets/31fb6faa-9a03-4d85-a300-b5314c76dc3d)
+
+#### 1.3.22. Create: Click Create.
+
+![image](https://github.com/user-attachments/assets/b118f76f-07d9-44b9-a0d9-ed5b7a1f0d97)
 
 
