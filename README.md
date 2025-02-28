@@ -123,7 +123,7 @@ For the annotation process, we will use Roboflow, a powerful tool designed for l
 
 #### 1.3.14. You can add other users and then click 'Assign to Myself'.
 
-![image](https://github.com/user-attachments/assets/0ba124b6-9d79-4dd8-9d18-3bee7120b851)
+![image](https://github.com/user-attachments/assets/faa46488-2913-4db5-ae02-6c2952b62660)
 
 
 
