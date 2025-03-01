@@ -399,7 +399,7 @@ This image appears to be the result of testing a trained YOLOv8 model on a drone
 ### 3.1. mAP Value Obtained from Prediction
 This image presents the mean Average Precision (mAP) results obtained from testing a YOLOv8 model trained on a drone detection dataset. The results indicate the model's performance metrics, including inference speed, preprocessing time, and postprocessing time for each image of shape (1, 3, 384, 640). The key evaluation metrics include mAP@50, which is reported as 0.9341, and mAP@50-95, which is recorded as 0.5546. These values represent the model’s detection accuracy at different Intersection over Union (IoU) thresholds, demonstrating its effectiveness in detecting drones within the dataset.
 
-![image](https://github.com/user-attachments/assets/99717873-b0d3-45cd-86b2-c3eadcae7b0a)
+![image](https://github.com/user-attachments/assets/f6526415-fad0-48c8-a8f6-8512a0ca868a)
 
 
 
