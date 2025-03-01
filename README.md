@@ -388,9 +388,19 @@ print("mAP50_95: ", mean_average_precision.map50_95)
 
 ## 3. Result
 
+### 3.1. Predicted Image
+This image appears to be the result of testing a trained YOLOv8 model on a drone detection dataset. The image showcases an aerial drone, which has been detected and annotated with a bounding box labeled "drone" and a confidence score. The bounding box and label indicate that the object detection model has identified the drone with moderate confidence. The presence of the bounding box suggests that the YOLOv8 model has been trained on a dataset containing drone images, enabling it to recognize and classify drones in real-world scenarios.
+
 ![image](https://github.com/user-attachments/assets/8be0533b-b557-457e-8f05-29a967a4df42)
 
 ![image](https://github.com/user-attachments/assets/6d74b5af-2a64-42b2-be84-59f2eab9fd22)
+
+
+### 3.1. mAP Value Obtained from Prediction
+This image presents the mean Average Precision (mAP) results obtained from testing a YOLOv8 model trained on a drone detection dataset. The results indicate the model's performance metrics, including inference speed, preprocessing time, and postprocessing time for each image of shape (1, 3, 384, 640). The key evaluation metrics include mAP@50, which is reported as 0.9341, and mAP@50-95, which is recorded as 0.5546. These values represent the model’s detection accuracy at different Intersection over Union (IoU) thresholds, demonstrating its effectiveness in detecting drones within the dataset.
+
+![image](https://github.com/user-attachments/assets/99717873-b0d3-45cd-86b2-c3eadcae7b0a)
+
 
 
 
