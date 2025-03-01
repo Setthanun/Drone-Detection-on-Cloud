@@ -166,36 +166,39 @@ For the annotation process, we will use Roboflow, a powerful tool designed for l
 
 ### 1.4. Upload data to the cloud in Azure AI | Machine Learning Studio
 
-#### 1.4.1. Create a new folder by merging the images and their corresponding annotation files (.txt) into the same folder. Do this for Train, Test, and Validation datasets.
+#### 1.4.1. Go to the Azure AI | Machine Learning Studio
+[![Azure](https://img.shields.io/badge/Azure-ML-blue)](https://ml.azure.com/)
+
+#### 1.4.2. Create a new folder by merging the images and their corresponding annotation files (.txt) into the same folder. Do this for Train, Test, and Validation datasets.
 ![image](https://github.com/user-attachments/assets/4a86b6b7-b0f7-4af2-8573-2b0e8c38944e)
 
-#### 1.4.2. In the Data page, click Create.
+#### 1.4.3. In the Data page, click Create.
 ![image](https://github.com/user-attachments/assets/3c850fe9-99a0-444f-9a34-6adad7654692)
 
-#### 1.4.3. In the Create data asset section, enter the dataset name and select the type as Folder, then click Next.
+#### 1.4.4. In the Create data asset section, enter the dataset name and select the type as Folder, then click Next.
 
 ![image](https://github.com/user-attachments/assets/37166773-c349-4a39-8d30-7c4629b17efc)
 
-#### 1.4.4. In the Create data asset tab, under Data source, select From local file, then click Next.
+#### 1.4.5. In the Create data asset tab, under Data source, select From local file, then click Next.
 
 ![image](https://github.com/user-attachments/assets/93b0ac3d-e4cf-4a1a-a4b7-890661189ca7)
 
-#### 1.4.5. In the Create data asset tab, under Destination storage type, select workspaceblobstore, then click Next.
+#### 1.4.6. In the Create data asset tab, under Destination storage type, select workspaceblobstore, then click Next.
 
 ![image](https://github.com/user-attachments/assets/cb594e08-45ee-4c1c-bb38-dc2d99624ed6)
 
-#### 1.4.6. In the Create data asset tab, under Folder selection, click Upload file or folder, then select Upload folder. Next, upload the prepared dataset folders for train, validation, and test, which include both images and annotation .txt files. Then, click Next.
+#### 1.4.7. In the Create data asset tab, under Folder selection, click Upload file or folder, then select Upload folder. Next, upload the prepared dataset folders for train, validation, and test, which include both images and annotation .txt files. Then, click Next.
 
 ![image](https://github.com/user-attachments/assets/734a4779-b486-41aa-a015-16537c54dcd4)
 
-#### 1.4.7. On the Review page, click Create.
+#### 1.4.8. On the Review page, click Create.
 Result
 
 ![image](https://github.com/user-attachments/assets/ac851b53-64e2-460f-b889-14fe79c2f252)
 
 ## Step 2: Training and Testing YOLOv8 Model on the Cloud
 ### 2.1. Go to the Azure AI | Machine Learning Studio
-[![Azure](https://img.shields.io/badge/Azure-ML-bkue)](https://ml.azure.com/)
+[![Azure](https://img.shields.io/badge/Azure-ML-blue)](https://ml.azure.com/)
 
 ### 2.2. Install Dependencies
 ```bash
