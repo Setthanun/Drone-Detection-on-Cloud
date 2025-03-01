@@ -194,24 +194,27 @@ Result
 ![image](https://github.com/user-attachments/assets/ac851b53-64e2-460f-b889-14fe79c2f252)
 
 ## Step 2: Training and Testing YOLOv8 Model on the Cloud
-### 2.1. Install Dependencies
+### 2.1. Go to the Azure AI | Machine Learning Studio
+[![Azure](https://img.shields.io/badge/Azure-ML-bkue)](https://ml.azure.com/)
+
+### 2.2. Install Dependencies
 ```bash
 pip install ultralytics azureml-sdk roboflow supervision
 ```
 
-### 2.2. On the left menu bar, scroll up to the top and click on "Notebooks." In the Notebooks page, click on "+ Files," then select "Create new folder" and name the folder before clicking "Create."
+### 2.3. On the left menu bar, scroll up to the top and click on "Notebooks." In the Notebooks page, click on "+ Files," then select "Create new folder" and name the folder before clicking "Create."
 ![image](https://github.com/user-attachments/assets/3c36d4b3-2282-4989-b944-ec0bb9f52c1a)
 ![image](https://github.com/user-attachments/assets/868ce472-fffb-4207-8202-26662fb79a6a)
 
-### 2.3. Go to the folder you created, click on the "..." button at the back, then select "Create new file." Enter the file name and choose "File type" as Notebook (*.ipynb), then click "Create."
+### 2.4. Go to the folder you created, click on the "..." button at the back, then select "Create new file." Enter the file name and choose "File type" as Notebook (*.ipynb), then click "Create."
 ![image](https://github.com/user-attachments/assets/65092cc9-7555-4d82-84e3-08609156e490)
 
 ![image](https://github.com/user-attachments/assets/4ca13ab8-b0e2-46a7-8818-0b467c74128c)
 
-### 2.4. In the Notebook.ipynb page that was created, under Compute, select the created Compute and click Run (if it's green, no need to click) until it changes from a black circle to green.
+### 2.5. In the Notebook.ipynb page that was created, under Compute, select the created Compute and click Run (if it's green, no need to click) until it changes from a black circle to green.
 ![image](https://github.com/user-attachments/assets/361eb4e0-bad5-4cd3-a0b0-ab411d42b052)
 
-### 2.5. To load and mount a dataset from Azure Machine Learning (Azure ML) to a local directory using the Azure ML SDK
+### 2.6. To load and mount a dataset from Azure Machine Learning (Azure ML) to a local directory using the Azure ML SDK
 
 ```python
 from azureml.core import Workspace, Dataset
@@ -256,7 +259,7 @@ ws = Workspace(
 )
 ```
 
-### 2.6. Create dataset.yaml
+### 2.7. Create dataset.yaml
 - Go to the folder you created, click on the "..." button at the back, then select "Create new file." Enter the file name and choose "File type" as Notebook (*.ipynb), then click "Create."
 ![image](https://github.com/user-attachments/assets/65092cc9-7555-4d82-84e3-08609156e490)
 
@@ -282,8 +285,8 @@ test: /mnt/batch/tasks/shared/LS_root/mounts/clusters/compute-target/code/Users/
 Do not make changes to the section of /mnt/batch/tasks/shared/LS_root/mounts/clusters/compute-target/code/. In the Users/kewalee.sr/Object_detection/datasets/DroneDataset, choose 'Copy folder path' from the Datasets folder you created and replace it (with DroneDataset being the user's dataset name). In the Train_data section, replace it with the name of the folder you set for Train, Validation, and Test.
 
 
-### 2.7. Train YOLOv8 model
-#### 2.7.1.In the case of starting training from scratch
+### 2.8. Train YOLOv8 model
+#### 2.8.1.In the case of starting training from scratch
 ```python
 import time
 
@@ -301,7 +304,7 @@ elapsed_time = end_time - start_time
 print(f"Training completed in {elapsed_time:.2f} seconds ({elapsed_time / 60:.2f} minutes).")
 ```
 
-#### 2.7.2.In the case of fine-tuning from an already existing model
+#### 2.8.2.In the case of fine-tuning from an already existing model
 ```python
 from ultralytics import YOLO
 
@@ -317,7 +320,20 @@ elapsed_time = end_time - start_time
 print(f"Training completed in {elapsed_time:.2f} seconds ({elapsed_time / 60:.2f} minutes).")
 ```
 
-### 2.8. Test YOLOv8 model
+### 2.9. Test YOLOv8 model
+#### 2.9.1. Testing to see the results.
+```python
+import numpy as np  
+from ultralytics import YOLO
+import matplotlib.pyplot as plt
+
+model = YOLO("./runs/detect/train/weights/best.pt")  
+
+results = model.predict(source='./datasets/DroneDataset/Test_data', save=True) #Change DroneDataset to the user's own dataset name and change Test_data to the uploaded test folder.
+```
+
+#### 2.9.2. Testing to determine the mAP value.
+
 ```python
 import supervision as sv
 from ultralytics import YOLO
