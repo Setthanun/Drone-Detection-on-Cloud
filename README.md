@@ -342,29 +342,29 @@ import supervision as sv
 from ultralytics import YOLO
 import numpy as np  
 import matplotlib.pyplot as plt
-
+ 
 data_yaml_path = r"./dataset.yaml"
-
-annotations_directory_path = r"/mnt/batch/tasks/shared/LS_root/mounts/clusters/compute-target/code/Users/kewalee.sr/Object_detection/datasets/DroneDataset/Test_data"
+ 
+annotations_directory_path = r"/mnt/batch/tasks/shared/LS_root/mounts/clusters/pond-compute/code/Users/teerapat.kam/DroneDetection/datasets/DroneDetection/testdataset"
 #Enter the path of the test dataset in the data.yaml file.
-
-images_directory_path = r"/mnt/batch/tasks/shared/LS_root/mounts/clusters/compute-target/code/Users/kewalee.sr/Object_detection/datasets/DroneDataset/Test_data"
+ 
+images_directory_path = r"/mnt/batch/tasks/shared/LS_root/mounts/clusters/pond-compute/code/Users/teerapat.kam/DroneDetection/datasets/DroneDetection/testdataset"
 #Enter the path of the test dataset in the data.yaml file.
-
+ 
 with open(data_yaml_path, 'r', encoding='utf-8') as file:
     print(file.read())  
-
+ 
 dataset = sv.DetectionDataset.from_yolo(
     annotations_directory_path=annotations_directory_path,
     data_yaml_path=data_yaml_path,
     images_directory_path=images_directory_path
 )
-
-model = YOLO("./runs/detect/train/weights/best.pt")  
-
+ 
+model = YOLO("./runs/detect/train8/weights/best.pt")  
+ 
 def callback(image: np.ndarray) -> sv.Detections:
-    result = model.predict(source=images_directory_path, save=True)[0]
-    
+    result = model.predict(image, save=True)[0]
+   
     if result.probs is not None and len(result.probs) > 0:
         print("Detected class names:", result.names)
         print("Detected class indices:", result.probs.argmax(axis=-1))
@@ -372,15 +372,15 @@ def callback(image: np.ndarray) -> sv.Detections:
         print("Predicted class names:", predicted_classes)
     else:
         print("No objects detected in the image.")
-    
+   
     return sv.Detections.from_ultralytics(result)
-
-
+ 
+ 
 mean_average_precision = sv.MeanAveragePrecision.benchmark(
     dataset=dataset,
     callback=callback
 )
-
+ 
 print("mAP50: ", mean_average_precision.map50)
 print("mAP50_95: ", mean_average_precision.map50_95)
 ```
@@ -396,7 +396,7 @@ This image appears to be the result of testing a trained YOLOv8 model on a drone
 ![image](https://github.com/user-attachments/assets/6d74b5af-2a64-42b2-be84-59f2eab9fd22)
 
 
-### 3.1. mAP Value Obtained from Prediction
+### 3.2. mAP Value Obtained from Prediction
 This image presents the mean Average Precision (mAP) results obtained from testing a YOLOv8 model trained on a drone detection dataset. The results indicate the model's performance metrics, including inference speed, preprocessing time, and postprocessing time for each image of shape (1, 3, 384, 640). The key evaluation metrics include mAP@50, which is reported as 0.9341, and mAP@50-95, which is recorded as 0.5546. These values represent the model’s detection accuracy at different Intersection over Union (IoU) thresholds, demonstrating its effectiveness in detecting drones within the dataset.
 
 ![image](https://github.com/user-attachments/assets/f6526415-fad0-48c8-a8f6-8512a0ca868a)
